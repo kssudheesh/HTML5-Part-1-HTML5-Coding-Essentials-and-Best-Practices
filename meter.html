@@ -1,0 +1,23 @@
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/fumepawuze/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+
+<pre>&lt;meter value=75 min=0 low=20 high=80 max=100 optimum=19 &gt;&lt;/meter&gt;</pre>
+
+<p>Grades: <meter id="meter2" value="75" value=75 min=0 low=20  high=80 max=100 optimum=19>75%</meter> 
+  
+<input min="0" max="100"   value="75" id="meter2range" oninput="effect('meter2', 'meter2range')" type="range"> 
+  <output id="meter2val" for="meter2range"></output></p>
+ <script>
+ function effect(meter, meterrange) {
+	var currVal = document.getElementById(meterrange).value;
+	document.getElementById(meter).value =  currVal;
+	document.getElementById(meter+ "val").innerHTML = currVal;
+ }
+ </script>

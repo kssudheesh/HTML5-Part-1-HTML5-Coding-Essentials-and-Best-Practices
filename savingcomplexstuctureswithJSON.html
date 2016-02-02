@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by micbuffa (http://jsbin.com/nacoho/13/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>  
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+input:invalid {
+  background-color:pink;
+}
+</style>
+</head>
+<body onload="init();">
+<form onsubmit="return submitForm();">
+Last name :   <input id="lastName" type="text" required><br> 
+ 
+First name :  <input id="firstName" type="text" required><br>
+  
+  <button>Submit</button>
+  </form> 
+<script id="jsbin-javascript">
+var firstNameField, lastNameField;
+// Array to persist in localStorage
+var contacts = [];
+
+function init() {
+  lastNameField = document.getElementById("lastName");
+  firstNameField = document.getElementById("firstName");
+  
+  console.log("Are there contacts in localStorage?");
+  if(localStorage.contacts) {
+    contacts = JSON.parse(localStorage.contacts);
+  } 
+  
+  console.log("end of init()");
+}
+
+function submitForm() {
+  // When we execute this function, the form content is necessary valid
+  console.log("We save the form content");
+  console.log("Name : " + lastNameField.value);
+  
+ // We create a JavaScript object for the contact
+ var contact = {};
+  contact.lastName = lastNameField.value;
+  contact.firstName = firstNameField.value;
+  
+  // Add the current contact to an array
+  contacts.push(contact);
+  
+  // Save in JSON
+  localStorage.contacts = JSON.stringify(contacts);
+  
+  return false;
+} 
+</script>
+</body>
+</html>

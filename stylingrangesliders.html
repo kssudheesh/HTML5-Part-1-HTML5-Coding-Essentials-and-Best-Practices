@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by micbuffa (http://jsbin.com/mufopi/9/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+  <head>
+    <style>
+      output {
+        border:1px solid black;
+        padding:2px;
+      }
+.custom {
+  width: 60%;
+  height:15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px #333;
+  background-image:linear-gradient(to right, lightGreen, blue 100%, orange);
+  transition: background 450ms;
+}
+
+/* Change the Slider Button Color Webkit (Opera, Chrome, Safari) */
+.custom::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background-color: #AAA;
+  background-image:         
+  linear-gradient(to bottom, #EEE, #AAA);     
+  border: 2px solid #999;    
+    height:30px;
+    width:30px;
+    border-radius: 15px;
+}
+/* Change the Slider Button Color FireFox */
+.custom::-moz-range-thumb {
+    background-color: #AAA;
+  background-image:         
+  linear-gradient(to bottom, #EEE, #AAA);     
+  border: 1px solid #999;    
+    height:30px;
+    width:30px;
+    border-radius: 15px;
+}
+
+
+    </style>
+    <script>
+  window.onload = function() {
+    setVolume('sliderVolume','volumeValue');
+  }
+  
+  function setVolume(sliderID, textbox) {
+     var x = document.getElementById(textbox);
+     var y = document.getElementById(sliderID);
+     x.value = y.value;
+    
+    volumeListener(sliderID);
+  }
+      
+      function volumeListener(id) {
+  var slider=document.getElementById(id);
+  
+  var val = (slider.value - slider.min) / (slider.max -     
+                                                  slider.min);
+    
+  val *= 100;
+var cssProp = 'linear-gradient(to right  , lightGreen, blue '+val +'%, red)';
+  
+  slider.style.backgroundImage = cssProp;
+}
+</script>
+  </head>
+
+<body>
+  <p>
+  <label for="sliderVolume">value=0.5 min=0, max=11 step="0.1":
+  </label><p> <input id="sliderVolume" type="range"  min="0" max="1" step="0.1" value="0.5"                           oninput="setVolume('sliderVolume','volumeValue')" class="custom"/>
+    
+    <output id="volumeValue"/> 
+  </p>
+
+<script id="jsbin-javascript">
+
+
+
+</script>
+</body>
+</html>
+

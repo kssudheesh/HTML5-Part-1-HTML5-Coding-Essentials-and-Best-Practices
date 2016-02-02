@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>  
+Select a color : <input type="color" id="colorChooser"/>
+  <script>
+    var colorInputField = document.querySelector("#colorChooser");
+    
+    colorInputField.addEventListener('input', function(evt) {      
+        document.body.style.backgroundColor = this.value;
+      }, false);
+  </script>
+</body>
+</html>

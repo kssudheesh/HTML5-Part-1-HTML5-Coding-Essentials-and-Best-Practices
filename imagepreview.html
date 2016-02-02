@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/dofenuqaxo/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<input type="file" multiple onchange="readImagesAndPreview(this.files);"><p>
+  <div id="thumbnails"></div>
+  <script>
+    var container = document.getElementById("thumbnails");
+    
+    function readImagesAndPreview(files) {
+      for(var i=0; i < files.length; i++) {
+         var f = files[i];
+      
+         var reader = new FileReader();
+        
+         reader.onload = function(e) {
+           var img = document.createElement("img");
+           img.src = e.target.result;
+           img.width = 100;
+           img.height = 150;
+           
+           container.appendChild(img);
+        }
+      
+        reader.readAsDataURL(f);
+      }
+    }
+    
+  </script>
+</body>
+</html>

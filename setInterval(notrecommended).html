@@ -1,0 +1,54 @@
+
+    <body onload="init();">
+        <canvas id="myCanvas" width="400" height="400">
+            Your browser does not support the canvas tag.
+        </canvas>
+        <p>
+        <button onclick="start()">Start animation</button>
+        <button onclick="stop()">Stop animation</button>
+        <script>
+            var canvas, ctx;
+            var monsterX=100, monsterY=100, monsterAngle=0;
+            function init() {
+                // This function is called after the page is loaded
+                // 1 - Get the canvas
+                canvas = document.getElementById('myCanvas');
+                // 2 - Get the context
+                ctx=canvas.getContext('2d');
+            }
+            function animationLoop() {
+                // 1 - Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                // 2 Draw the monster using variables for pos, angle, etc.
+               drawMonster(monsterX, monsterY, monsterAngle, 'green', 'yellow');
+               // 3 Move the monster (change pos, angle, size, etc.)
+               monsterX += 10;
+               monsterX %= canvas.width
+               monsterAngle+= 0.01;
+            }
+            function drawMonster(x, y, angle, headColor, eyeColor) {
+            // BEST PRACTICE: SAVE CONTEXT AND RESTORE IT AT THE END
+            ctx.save();
+            // Moves the coordinate system so that the monster is drawn
+            // at position (x, y)
+            ctx.translate(x, y);
+            ctx.rotate(angle)
+            // head
+            ctx.fillStyle=headColor;
+            ctx.fillRect(0,0,200,200);
+            ...
+            // BEST PRACTICE!
+            ctx.restore();
+         }
+         function start() {
+             // Start the animation loop, change 20 for bigger values
+             requestId = setInterval(animationLoop, 20);
+         }
+         function stop() {
+             if (requestId) {
+                 clearInterval(requestId);
+             }
+         }
+    </script>
+    </body>
+

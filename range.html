@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html>
+       <head>
+          <style>
+              #rangeValue1 {
+                  border:1px solid black;
+                  padding:2px;
+              }
+
+      </style>
+      <script>
+        window.onload = function() {
+          // Called when the page is loaded, for displaying initial value in the output
+          printValue('slider1','rangeValue1');
+        }
+        function printValue(sliderId, outputId) {
+          var x = document.getElementById(outputId);
+          var y = document.getElementById(sliderId);
+          x.value = y.value;
+        }
+      </script>
+</head>
+<body>
+  <form >
+     <label for="slider1">Select a value:</label>
+     <input id="slider1" type="range"
+            min="100" max="500" step="10" value="150"
+            oninput="printValue('slider1','rangeValue1')"/>
+     <output id="rangeValue1"></output>
+  </form>
+  <br/>
+  Play with attributes: value, min, max, step...
+</body>
+</html>

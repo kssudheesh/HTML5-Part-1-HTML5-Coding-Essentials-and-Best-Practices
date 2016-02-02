@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by micbuffa (http://jsbin.com/xeravi/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+  <head>
+    <style>
+      output {
+        border:1px solid black;
+        padding:2px;
+      }
+    </style>
+    <script>
+  window.onload = function() {
+    printValue('slider6','rangeValue6');
+    printValue('slider7','rangeValue7');
+    printValue('slider8','rangeValue8');
+    printValue('slider9','rangeValue9');
+  }
+  
+  function printValue(sliderID, textbox) {
+     var x = document.getElementById(textbox);
+     var y = document.getElementById(sliderID);
+     x.value = y.value;
+  }
+</script>
+  </head>
+
+<body>
+  <p>
+  <label for="slider6">value=5 min=0, max=10 step=1, ticks at 2, 4, 6, 8 and 10:
+  </label> <input id="slider6" type="range" list="ticks6" min="0" max="10" step="1" value="5"                           oninput="printValue('slider6','rangeValue6')"/>
+     <datalist id=ticks6>
+<option>0</option>
+<option>2</option>
+<option>4</option>
+<option>6</option>
+<option>8</option>
+<option>10</option>
+</datalist>
+    <output id="rangeValue6"/> 
+  </p>
+  <p>
+  <label for="slider7">value=20 min=10, max=50 step=5, ticks at 0, 10, 20, 30, 40 and 50:
+  </label> <input id="slider7" type="range" list="ticks7" min="10" max="50" step="5" value="20"                           oninput="printValue('slider7','rangeValue7')"/>
+    <datalist id=ticks7>
+<option>0</option>
+<option>10</option>
+<option>20</option>
+<option>30</option>
+<option>40</option>
+<option>50</option>
+</datalist>
+    <output id="rangeValue7"/> 
+  </p>    
+    <p>
+  <label for="slider8">value=5 min=0, max=10 step="0.5", ticks at 0, 0.5, 1, 2, 4, 8:
+  </label> <input id="slider8" type="range" list="ticks8" min="0" max="10" step="0.5" value="5"                           oninput="printValue('slider8','rangeValue8')"/>
+<datalist id=ticks8>
+<option>0</option>
+<option>0.5</option>
+<option>1</option>
+<option>2</option>
+<option>4</option>
+<option>8</option>
+<option>10</option>
+</datalist>
+      <output id="rangeValue8"/> 
+  </p>
+      <p>
+  <label for="slider9">value=5 min=0, max=10 step="any", ticks at 0, 5 and 10:
+  </label> <input id="slider9" type="range" list="ticks9" min="0" max="10" step="any" value="0.5"                           oninput="printValue('slider9','rangeValue9')"/>
+        <datalist id=ticks9>
+<option>0</option>
+<option>5</option>
+<option>10</option>
+
+</datalist>
+        <output id="rangeValue9"/> 
+  </p>
+ 
+<script id="jsbin-javascript">
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by micbuffa (http://jsbin.com/fufiyu/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+ <head>
+ <style>
+     #myCanvas {
+         border: 1px solid black;
+     }
+ </style>
+ <script>
+   var canvas, ctx;
+   
+   // List of images to load, we used a JavaScript object instead of 
+   // an array, so that named indexes (aka properties)
+   // can be used -> easier to manipulate
+   var imagesToLoad = {
+        flowers: 'http://cdn2.digitalartsonline.co.uk/images/features/1675/intro.jpg',
+        lion: 'http://farm3.static.flickr.com/2319/2486384418_8c031fec76_o.jpg',
+        blackAndWhiteLys: 'http://pshero.com/assets/tutorials/0062/final.jpg',
+        tiledFloor: 'http://4.bp.blogspot.com/_Rqs7w7m37B4/TETj5rD_QmI/AAAAAAAAADk/qRiwoTO-zKk/s1600/symmetry:assymetry+repeatable+pattern.jpg'
+      };
+
+   
+ function loadImages(imagesToBeLoaded, drawCallback) {
+  var imagesLoaded = {};
+  var loadedImages = 0;
+  var numberOfImagesToLoad = 0;
+    
+  // get num of sources
+  for(var name in imagesToBeLoaded) {
+    numberOfImagesToLoad++;
+  }
+    
+  for(var name in imagesToBeLoaded) {
+    imagesLoaded[name] = new Image();
+    imagesLoaded[name].onload = function() {
+        if(++loadedImages >= numberOfImagesToLoad) {
+           drawCallback(imagesLoaded);
+         } // if
+     }; // function
+     imagesLoaded[name].src = imagesToBeLoaded[name];
+  } // for
+} // function
+   
+   
+   function init() {
+     // This function is called after the page is loaded
+     // 1 - Get the canvas
+     canvas = document.getElementById('myCanvas');
+     // 2 - Get the context
+     ctx=canvas.getContext('2d');
+     
+     loadImages(imagesToLoad, function(imagesLoaded) {
+       patternFlowers = ctx.createPattern(imagesLoaded.flowers, 'repeat');
+       patternLion = ctx.createPattern(imagesLoaded.lion, 'repeat');
+       patternBW = ctx.createPattern(imagesLoaded.blackAndWhiteLys, 'repeat');
+       patternFloor = ctx.createPattern(imagesLoaded.tiledFloor, 'repeat');
+         drawRectanglesWithPatterns();  
+      }); 
+     
+     
+   }
+   
+   function drawRectanglesWithPatterns() {     
+     ctx.fillStyle=patternFloor;
+     ctx.fillRect(0,0,200,200);
+     
+     ctx.fillStyle=patternLion;
+     ctx.fillRect(200,0,200,200);
+     
+     ctx.fillStyle=patternFlowers;
+     ctx.fillRect(0,200,200,200);
+
+     ctx.fillStyle=patternBW;
+     ctx.fillRect(200,200,200,200);
+   }
+ </script>
+ </head>
+<body onload="init();">
+    <canvas id="myCanvas" width="400" height="400">
+            Your browser does not support the canvas tag.
+    </canvas>
+</body>
+</html>

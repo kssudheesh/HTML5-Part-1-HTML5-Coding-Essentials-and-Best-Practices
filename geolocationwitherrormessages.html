@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by micbuffa (http://jsbin.com/miropup/4/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang="en">
+  <head>
+    <title>Basic example of use of the geolocation API</title>
+  </head>
+<body>
+<p id="msg">Click the button to get your coordinates:</p>
+<button onclick="getLocation()">Where am I ?</button>
+  
+<script>
+var displayCoords=document.getElementById("msg");
+  
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, errorPosition);
+  } else {
+    displayCoords.innerHTML="Geolocation API not supported by your browser.";
+  }
+}
+  
+  
+function showPosition(position) {
+ displayCoords.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br />Longitude: " + position.coords.longitude;	
+}
+  
+  function errorPosition(error) { 
+   var info = "Error during geolocation: ";
+ 
+   switch(error.code) {
+     case error.TIMEOUT:
+       info += "Timeout !";
+       break;
+     case error.PERMISSION_DENIED: 
+       info += "Permission denied, geolocation could not be obtained...";
+       break;
+     case error.POSITION_UNAVAILABLE:
+       info += "Location could not be obtained though the avaible means...";
+       break;
+     case error.UNKNOWN_ERROR:
+       info += "Unknown error";
+       break;
+     }
+   displayCoords.innerHTML = info;
+ }
+</script>
+</body>
+</html>
+

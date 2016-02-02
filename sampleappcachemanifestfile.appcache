@@ -1,0 +1,19 @@
+CACHE MANIFEST
+CACHE:
+#images
+/images/image1.png
+/images/image2.png
+#pages
+/pages/page1.html
+/pages/page2.html
+#CSS
+/style/style.css
+#scripts
+/js/script.js
+FALLBACK:
+/ /offline.html
+NETWORK:
+login.html
+
+    
+    

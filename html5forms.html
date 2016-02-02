@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by micbuffa (http://jsbin.com/jagodi/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Form example</title>
+<style id="jsbin-css">
+fieldset {
+  padding:10px;
+  border-radius:10px;
+}
+
+label {
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+input {
+  float:right;
+  margin-right:70px;
+  width:150px;
+}
+
+input:invalid {
+  background-color:pink;
+}
+</style>
+</head>
+<body>
+<form action="myServerComponent.php" method="POST">
+  <fieldset>
+    <legend>Personal informations</legend>
+    
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" required name="firstName">
+    
+    <br>
+    
+    <label for="lastName">Last name:</label>
+    <input type="text" id="lastName" required name="lastName">
+    
+    <br>
+     <label for="email">Email:</label>
+    <input type="email" id="email" required name="email">
+    
+     <br>
+     <label for="age">Age:</label>
+    <input type="number" min=0 max=120  step=5 id="age" required name="age">
+ 
+         <br>
+     <label for="date">Birth date:</label>
+    <input type="date"  id="date" required name="date">
+  </fieldset>
+  
+  <button>Submit form</button>
+  </form>
+<script id="jsbin-javascript">
+function sendForm() {
+  console.log("in sendForm()");
+  
+  // SEND THE FORM USING AJAX
+  
+  // PERFORM CUSTOM VALIDATION
+  
+  return false;
+}
+</script>
+</body>
+</html>

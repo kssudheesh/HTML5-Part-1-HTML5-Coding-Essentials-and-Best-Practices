@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Paint with the mouse</title>
+        <style>
+            #myCanvas {
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            var canvas, ctx, previousMousePos;
+
+            function getMousePos(canvas, evt) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
+
+            function drawRect(x1, y1, x2, y2) {
+                ctx.beginPath();
+                ctx.fillRect(x1,y1,x2-x1,y2-y1);;
+              
+            }
+               
+            function clicked(evt) {
+                previousMousePos = getMousePos(canvas, evt);
+            }
+
+            function released(evt) {
+                var mousePos = getMousePos(canvas, evt);
+                drawRect(previousMousePos.x, previousMousePos.y,
+                            mousePos.x, mousePos.y);
+            }
+
+
+            window.onload = function () {
+                canvas = document.getElementById('myCanvas');
+                ctx = canvas.getContext('2d');
+                canvas.addEventListener('mousedown', clicked);
+                canvas.addEventListener('mouseup', released);
+            };
+        </script>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="400" height="400">
+        </canvas>
+    </body>
+</html>

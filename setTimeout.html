@@ -1,0 +1,23 @@
+function animationLoop() {
+   // 1 - Clear
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   // 2 Draw
+   drawMonster(monsterX, monsterY, monsterAngle, 'green', 'yellow');
+   // 3 Move
+   monsterX += 10;
+   monsterX %= canvas.width
+   monsterAngle+= 0.01;
+   // call mainloop again after 20ms
+   requestId = setTimeout(animationLoop, 20);
+}
+ 
+function start() {
+   // Start the animation loop, change 20 for bigger
+   // values
+   requestId = setTimeout(animationLoop, 20);
+}
+function stop() {
+   if (requestId) {
+      clearTimeout(requestId);
+   }
+}

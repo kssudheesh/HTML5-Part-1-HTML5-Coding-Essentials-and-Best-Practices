@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by micbuffa (http://jsbin.com/zezudo/8/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Form example</title>
+<style id="jsbin-css">
+fieldset {
+  padding:10px;
+  border-radius:10px;
+}
+
+label {
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+input {
+  float:right;
+  margin-right:70px;
+  width:150px;
+}
+
+input:invalid {
+  background-color:pink;
+}
+</style>
+</head>
+<body>
+<form action="myServerComponent.php" method="POST">
+  <fieldset>
+    <legend>Personal informations</legend>
+    
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" required name="firstName"
+           oninput="localStorage.firstName=this.value;">
+    
+    <br>
+    
+    <label for="lastName">Last name:</label>
+    <input type="text" id="lastName" required name="lastName"
+           oninput="localStorage.lastName=this.value;">
+    
+    <br>
+     <label for="email">Email:</label>
+    <input type="email" id="email" required name="email"
+           oninput="localStorage.email=this.value;">
+    
+     <br>
+     <label for="age">Age:</label>
+    <input type="number" min=0 max=120  step=5 id="age" 
+           required name="age"
+           oninput="localStorage.age=this.value;">
+ 
+         <br>
+     <label for="date">Birth date:</label>
+    <input type="date"  id="date" required name="date"
+           oninput="localStorage.date=this.value;">
+  </fieldset>
+  
+  <button>Submit form</button>
+  </form>
+<script id="jsbin-javascript">
+
+function restoreFormContent() {
+  console.log("restoring form content from localStorage");
+  
+  if(localStorage.firstName !== undefined) 
+    document.getElementById("firstName").value = localStorage.firstName;
+ 
+  if(localStorage.lastName !== undefined) 
+    document.getElementById("lastName").value = localStorage.lastName;
+  
+  if(localStorage.email !== undefined) 
+    document.getElementById("email").value = localStorage.email;
+
+  if(localStorage.age !== undefined) 
+    document.getElementById("age").value = localStorage.age;
+  
+  if(localStorage.date !== undefined) 
+    document.getElementById("date").value = localStorage.date;
+
+}
+
+// Called when the page is loaded
+window.onload = restoreFormContent;
+
+
+</script>
+</body>
+</html>

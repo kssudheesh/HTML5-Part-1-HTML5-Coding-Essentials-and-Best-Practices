@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by anonymous (http://jsbin.com/jedunagupe/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    canvas {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id = "myCanvas" width = 400 height = 400>
+    Canvas is not supported by your browser
+  </canvas>
+<script id="jsbin-javascript">
+var canvas, context;
+window.onload = init;
+function init(){
+  canvas = document.querySelector("#myCanvas");
+  context = canvas.getContext('2d');
+  drawMonster(150,100,Math.PI/4,'red');
+  drawMonster(50,50,Math.PI/4,'green');
+  context.fillStyle = "brown";
+  context.fillRect(0,0,50,50);
+  context.strokeText("Hello World!", 200, 100, 250);
+    context.fillText("Hello World!", 300, 100,250);
+  function drawMonster(x,y,angle,color){
+    //GOOD PRACTICE
+    context.save();
+    //changing context properties
+    context.translate(x,y);
+    context.rotate(angle);
+    context.fillStyle = color;
+    context.fillRect(0,0,200,200);
+    
+    context.restore();//GOOD PRACTICE
+    
+  }
+}
+</script>
+</body>
+</html>
